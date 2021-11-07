@@ -1,4 +1,5 @@
-FROM debian:stretch-slim
+FROM debian:buster-slim
+
 LABEL maintainer="Phil Hawthorne <me@philhawthorne.com>"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -6,7 +7,6 @@ ENV LANG C.UTF-8
 
 # Default versions
 ENV INFLUXDB_VERSION=1.8.2
-ENV CHRONOGRAF_VERSION=1.8.6
 ENV GRAFANA_VERSION=7.2.0
 
 # Grafana database type
@@ -50,9 +50,6 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" && \
     && wget --no-verbose https://dl.influxdata.com/influxdb/releases/influxdb_${INFLUXDB_VERSION}_${ARCH}.deb \
     && dpkg -i influxdb_${INFLUXDB_VERSION}_${ARCH}.deb \
     && rm influxdb_${INFLUXDB_VERSION}_${ARCH}.deb \
-    # Install Chronograf
-    && wget https://dl.influxdata.com/chronograf/releases/chronograf_${CHRONOGRAF_VERSION}_${ARCH}.deb \
-    && dpkg -i chronograf_${CHRONOGRAF_VERSION}_${ARCH}.deb && rm chronograf_${CHRONOGRAF_VERSION}_${ARCH}.deb \
     # Install Grafana
     && wget https://dl.grafana.com/oss/release/grafana_${GRAFANA_VERSION}_${ARCH}.deb \
     && dpkg -i grafana_${GRAFANA_VERSION}_${ARCH}.deb \
