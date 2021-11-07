@@ -109,3 +109,24 @@ Port: 8086
 [grafana-version]: https://img.shields.io/badge/Grafana-7.2.0-brightgreen
 [influx-version]: https://img.shields.io/badge/Influx-1.8.2-brightgreen
 [chronograf-version]: https://img.shields.io/badge/Chronograf-1.8.6-brightgreen
+
+
+# Setup
+
+## Build
+
+```sh
+docker build -t docker-influxdb-grafana:latest .
+```
+
+## Run
+
+```sh
+docker run -d \
+   --name influxdb-grafana \
+   -p 3003:3003 \
+   -p 8086:8086 \
+   -v /home/pi/influxdb:/var/lib/influxdb \
+   -v /home/pi/grafana:/var/lib/grafana \
+   docker-influxdb-grafana:latest
+```

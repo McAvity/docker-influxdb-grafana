@@ -6,8 +6,8 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV LANG C.UTF-8
 
 # Default versions
-ENV INFLUXDB_VERSION=1.8.2
-ENV GRAFANA_VERSION=7.2.0
+ENV INFLUXDB_VERSION=1.8.10
+ENV GRAFANA_VERSION=7.5.11
 
 # Grafana database type
 ENV GF_DATABASE_TYPE=sqlite3
@@ -42,7 +42,7 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" && \
         supervisor \
         wget \
         gnupg \
-    && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+    && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
     && apt-get install -y nodejs \
     && mkdir -p /var/log/supervisor \
     && rm -rf .profile \
