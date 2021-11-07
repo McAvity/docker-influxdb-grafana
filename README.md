@@ -123,6 +123,7 @@ docker build -t docker-influxdb-grafana:latest .
 
 ```sh
 docker run -d \
+   --restart always \
    --name influxdb-grafana \
    -p 3003:3003 \
    -p 8086:8086 \
